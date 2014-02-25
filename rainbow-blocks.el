@@ -1,4 +1,4 @@
-;;; rainbow-blocks.el --- Block syntax highlighting for lisp code.
+;;; rainbow-blocks.el --- Block syntax highlighting for lisp code
 
 ;; Copyright (C) 2014 istib
 
@@ -421,4 +421,4 @@ Used by jit-lock for dynamic highlighting."
 
 (provide 'rainbow-blocks)
 
-;;; rainbow-blocks.el ends here.
+;;; rainbow-blocks.el ends here
