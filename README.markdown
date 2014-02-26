@@ -2,15 +2,19 @@ rainbow-blocks: Groking Lisp languages through block highlighting.
 ======================
 
 
-Rainbow Blocks is an Emacs mode that highlights code blocks in lisp languages
-to help quickly mentally parse its structure.
+Rainbow-blocks is an Emacs mode that highlights blocks made of
+parentheses, brackets, and braces according to their depth. Each
+successive level is highlighted in a different color. This makes it
+easy to orient yourself in the code, and tell which statements are at
+a given level.
+
 It is a fork from the brilliant
 [rainbow-delimiters.el](http://github.com/jlr/rainbow-delimiters) package, and
 only applies minor patches.
 
-It is inspired by Douglas Crockford's remark that highlighting scope rather
-that syntax is sometimes more useful.
-So far, however, it does not understand the actual scope constructs of the given language.
+It is inspired by Douglas Crockford's remark that highlighting scope
+rather that syntax is sometimes more useful. So far, however, it does
+not understand the actual scope constructs of the given language.
 
 ### Emacs Lisp example
 
@@ -34,6 +38,8 @@ So far, however, it does not understand the actual scope constructs of the given
 * Activate the mode in your init file (e.g. for clojure):
 ```(add-hook 'clojure-mode-hook 'rainbow-blocks-mode)```
 
+* It is also often useful to temporarily enable the mode by just calling:
+```M-x rainbow-blocks-mode ```
 
 ### Further reading
 
