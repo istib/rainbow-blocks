@@ -10,7 +10,7 @@ only applies minor patches.
 
 It is inspired by Douglas Crockford's remark that highlighting scope rather
 that syntax is sometimes more useful.
-So far, however, it does not parse syntax nor understands language scope.
+So far, however, it does not understand the actual scope constructs of the given language.
 
 ### Emacs Lisp example
 
@@ -23,7 +23,7 @@ So far, however, it does not parse syntax nor understands language scope.
 ### Installation
 
 * Install via melpa:
-```M-x package-install RET rainbow-blocks RED```
+```M-x package-install RET rainbow-blocks RET```
 
 * Compile the file (necessary for speed):
 ```M-x byte-compile-file [location of rainbow-blocks.el]```
@@ -32,11 +32,10 @@ So far, however, it does not parse syntax nor understands language scope.
 ```(require 'rainbow-blocks)```
 
 * Activate the mode in your init file (e.g. for clojure):
-
 ```(add-hook 'clojure-mode-hook 'rainbow-blocks-mode)```
 
 
 ### Further reading
 
 - Daniel's Lamb's [implementation for JavaScript](https://github.com/daniellmb/JavaScript-Scope-Context-Coloring)
-- [Evan Brooks' article](https://medium.com/p/3a6db2743a1e/))
+- [Evan Brooks' article](https://medium.com/p/3a6db2743a1e/)
