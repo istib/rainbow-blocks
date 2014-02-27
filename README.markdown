@@ -18,11 +18,7 @@ not understand the actual scope constructs of the given language.
 
 ### Emacs Lisp example
 
-##### rainbow delimiters
-![](elisp-delims.png)
-##### rainbow blocks
 ![](elisp-blocks.png)
-
 
 ### Installation
 
