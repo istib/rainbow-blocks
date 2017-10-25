@@ -1,4 +1,4 @@
-rainbow-blocks: Groking Lisp languages through block highlighting.
+rainbow-blocks: Understand Clojure/Lisp code at a glance using block highlighting.
 ======================
 
 
@@ -8,15 +8,13 @@ successive level is highlighted in a different color. This makes it
 easy to orient yourself in the code, and tell which statements are at
 a given level.
 
+Highlighting scope rather that syntax is sometimes more useful for Clojure/Lisp languages, and sometimes even Python. 
+
 It is a fork from the brilliant
 [rainbow-delimiters.el](http://github.com/jlr/rainbow-delimiters) package, and
 only applies minor patches.
 
-It is inspired by Douglas Crockford's remark that highlighting scope
-rather that syntax is sometimes more useful. So far, however, it does
-not understand the actual scope constructs of the given language.
-
-### Emacs Lisp example
+### Example
 
 ![](elisp-blocks.png)
 
@@ -40,4 +38,3 @@ not understand the actual scope constructs of the given language.
 ### Further reading
 
 - Daniel's Lamb's [implementation for JavaScript](https://github.com/daniellmb/JavaScript-Scope-Context-Coloring)
-- [Evan Brooks' article](https://medium.com/p/3a6db2743a1e/)
