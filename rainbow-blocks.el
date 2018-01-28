@@ -367,37 +367,39 @@ Used by jit-lock for dynamic highlighting."
   (setq rainbow-blocks-escaped-char-predicate
         (cdr (assoc major-mode rainbow-blocks-escaped-char-predicate-list)))
   (save-excursion
-    (goto-char start)
-    ;; START can be anywhere in buffer; determine the nesting depth at START loc
-    (let ((depth (rainbow-blocks-depth start)))
-      (while (and (< (point) end)
-                  (re-search-forward rainbow-blocks-delim-regex end t))
-        (backward-char) ; re-search-forward places point after delim; go back.
-        (unless (rainbow-blocks-char-ineligible-p (point))
-          (let ((delim (char-after (point))))
-            (cond ((eq ?\( delim)
-                   (setq depth (1+ depth))
-                   (rainbow-blocks-apply-color "paren" depth (point)))
-                  ((eq ?\) delim)
-                   ;;(rainbow-blocks-apply-color "paren" depth (point))
-                   (setq depth (or (and (<= depth 0) 0) ; unmatched paren
-                                   (1- depth))))
-                  ((eq ?\[ delim)
-                   (setq depth (1+ depth))
-                   (rainbow-blocks-apply-color "bracket" depth (point)))
-                  ((eq ?\] delim)
-                   ;;(rainbow-blocks-apply-color "bracket" depth (point))
-                   (setq depth (or (and (<= depth 0) 0) ; unmatched bracket
-                                   (1- depth))))
-                  ((eq ?\{ delim)
-                   (setq depth (1+ depth))
-                   (rainbow-blocks-apply-color "brace" depth (point)))
-                  ((eq ?\} delim)
-                   ;;(rainbow-blocks-apply-color "brace" depth (point))
-                   (setq depth (or (and (<= depth 0) 0) ; unmatched brace
-                                   (1- depth)))))))
-        ;; move past delimiter so re-search-forward doesn't pick it up again
-        (forward-char)))))
+    (let ((start (window-start))
+          (end (window-end)))
+      (goto-char start)
+      ;; START can be anywhere in buffer; determine the nesting depth at START loc
+      (let ((depth (rainbow-blocks-depth start)))
+        (while (and (< (point) end)
+                    (re-search-forward rainbow-blocks-delim-regex end t))
+          (backward-char) ; re-search-forward places point after delim; go back.
+          (unless (rainbow-blocks-char-ineligible-p (point))
+            (let ((delim (char-after (point))))
+              (cond ((eq ?\( delim)
+                     (setq depth (1+ depth))
+                     (rainbow-blocks-apply-color "paren" depth (point)))
+                    ((eq ?\) delim)
+                     ;;(rainbow-blocks-apply-color "paren" depth (point))
+                     (setq depth (or (and (<= depth 0) 0) ; unmatched paren
+                                     (1- depth))))
+                    ((eq ?\[ delim)
+                     (setq depth (1+ depth))
+                     (rainbow-blocks-apply-color "bracket" depth (point)))
+                    ((eq ?\] delim)
+                     ;;(rainbow-blocks-apply-color "bracket" depth (point))
+                     (setq depth (or (and (<= depth 0) 0) ; unmatched bracket
+                                     (1- depth))))
+                    ((eq ?\{ delim)
+                     (setq depth (1+ depth))
+                     (rainbow-blocks-apply-color "brace" depth (point)))
+                    ((eq ?\} delim)
+                     ;;(rainbow-blocks-apply-color "brace" depth (point))
+                     (setq depth (or (and (<= depth 0) 0) ; unmatched brace
+                                     (1- depth)))))))
+          ;; move past delimiter so re-search-forward doesn't pick it up again
+          (forward-char))))))
 
 (defun rainbow-blocks-unpropertize-region (start end)
   "Remove highlighting from blocks between START and END."
