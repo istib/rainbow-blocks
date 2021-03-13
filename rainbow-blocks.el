@@ -402,7 +402,8 @@ Used by jit-lock for dynamic highlighting."
 (defun rainbow-blocks-unpropertize-region (start end)
   "Remove highlighting from blocks between START and END."
   (save-excursion
-    (set-text-properties (point-min) (point-max) nil)
+    (with-silent-modifications
+      (set-text-properties (point-min) (point-max) nil))
     (goto-char start)
     (while (and (< (point) end)
                 (re-search-forward rainbow-blocks-delim-regex end t))
